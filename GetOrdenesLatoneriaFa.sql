@@ -19,9 +19,10 @@ GO
 -- 2021-08-24   Se modifica el campo EMAIL para que muestre el EMAIL de la Aseguradora o caso contrario del Cliente. (JCHB)
 -- 2021-08-24   Se modifica el campo FECHA_AUTORIZACION_ASEGURADORA para que se muestre unicamente en las Facturas a Aseguradoras. (JCHB)
 -- 2021-08-31	Se agrega la union con la tabla cot_cliente_contacto y cot_cliente para obetner el campo propietario
--- 2021-11-29	Se agrega la cedula o ruc del cliente
+-- 2021-11-29	Se agrega la cedula o ruc del cliente (Se valida el 08-01-2022 y no es verdad)
+-- 2022-01-08	Se agrega la cedula o ruc del cliente (MQR)
 -- ========================================================================================================================================
---  exec [dbo].[GetOrdenesLatoneriaFa] 605,'0','2021-08-01','2021-08-31','0'
+--  exec [dbo].[GetOrdenesLatoneriaFa] 605,'0','2021-12-01','2021-12-31','0'
 
 ALTER PROCEDURE [dbo].[GetOrdenesLatoneriaFa]
 (
@@ -586,6 +587,7 @@ SELECT	SW = tfac.sw,
 		COMENTARIO = '',
 		ASESOR_SERVICIO = uven.nombre,
 		--PROPIETARIO = cli3.razon_social,
+		RUC_PROPIETARIO=p.nit,
 		PROPIETARIO = p.razon_social,
 		--EMAIL_PROPIETARIO = cli3.url,
 		EMAIL_PROPIETARIO = p.url,
@@ -636,7 +638,7 @@ GROUP BY tfac.sw, bod.descripcion, vhl.vin, d.id_cot_cotizacion_sig, ot.id, ot.f
 			cv6.campo_11, cv7.campo_11, cv6.campo_12, ic.descripcion, cv7.campo_12, ic2.descripcion, col.descripcion,
 			clia.razon_social,clia2.[url],clia.[url], ubod.descripcion, vhl.placa, ot.fecha, cmas.fecha_envio_ase, 
 			ot.fecha_cartera, d.docref_numero, uven.nombre, --cli3.razon_social,cli3.url,cli3.tel_1,cli3.tel_2,
-			p.razon_social,p.tel_1,p.tel_2,p.url
+			p.razon_social,p.tel_1,p.tel_2,p.url,p.nit
 ORDER BY 4;
 
 --  exec [dbo].[GetOrdenesLatoneriaFa] 605,'0','2021-08-01','2021-08-31','0'
@@ -668,6 +670,7 @@ SELECT 	r.SW,
 		r.PLACA,
 		r.VIN,
 		r.NRO_ORDEN,
+		r.RUC_PROPIETARIO,
 		r.PROPIETARIO,
 		--r.PROPIETARIO2,
 		r.EMAIL_PROPIETARIO,
