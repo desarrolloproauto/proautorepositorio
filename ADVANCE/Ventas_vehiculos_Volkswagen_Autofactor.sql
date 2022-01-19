@@ -1,7 +1,8 @@
--- Actual de Ventas de VW
+
 use DWH_Comercial
 go
 
+-- Actual de Ventas de VW
 select veh.Id_Factura,
        veh.FechaComprobante,
 	   veh.NitCliente,
@@ -41,3 +42,4 @@ join DimEmpresas e on e.IdEmpresa = veh.IdEmpresa
 LEFT join DWH_Repuestos..DimCliente cli on veh.NitCliente = cli.nit_cliente 
 LEFT join DimAsesor a on veh.Id_Asesor = a.Id
 where e.RazonSocial = 'AUTOFACTOR'
+order by veh.FechaComprobante asc
