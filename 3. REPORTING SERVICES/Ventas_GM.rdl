@@ -57,17 +57,9 @@
           </QueryParameter>
         </QueryParameters>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>Get_RS_T_NumeroVINsTaller_GM</CommandText>
+        <CommandText>Get_RS_T_NumeroVINsTaller_GM_Borrador</CommandText>
       </Query>
       <Fields>
-        <Field Name="SW">
-          <DataField>SW</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
-        </Field>
-        <Field Name="NRO_ORDEN">
-          <DataField>NRO_ORDEN</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
         <Field Name="ZONA">
           <DataField>ZONA</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -79,6 +71,10 @@
         <Field Name="TIPO_ORDEN">
           <DataField>TIPO_ORDEN</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="num_unidades">
+          <DataField>num_unidades</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="LINEA_VH">
           <DataField>LINEA_VH</DataField>
@@ -186,6 +182,7 @@ select @fecFin</CommandText>
                                   <Value>=Sum(Fields!Neto.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -224,6 +221,7 @@ select @fecFin</CommandText>
                                   <Value>=Sum(Fields!Neto.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -306,6 +304,7 @@ select @fecFin</CommandText>
                                   <Value>=Sum(Fields!Neto.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -344,6 +343,7 @@ select @fecFin</CommandText>
                                   <Value>=Sum(Fields!Neto.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -426,6 +426,7 @@ select @fecFin</CommandText>
                                   <Value>=Sum(Fields!Neto.Value)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -459,6 +460,7 @@ select @fecFin</CommandText>
                                   <Value>=Sum(Fields!Neto.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -530,6 +532,7 @@ select @fecFin</CommandText>
                                   <Value>=Sum(Fields!Neto.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -563,6 +566,7 @@ select @fecFin</CommandText>
                                   <Value>=Sum(Fields!Neto.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>n2</Format>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -656,6 +660,7 @@ select @fecFin</CommandText>
                                 <Value>=Fields!Canal.Value</Value>
                                 <Style>
                                   <FontWeight>Bold</FontWeight>
+                                  <Format>f2</Format>
                                   <Color>#333333</Color>
                                 </Style>
                               </TextRun>
@@ -673,7 +678,6 @@ select @fecFin</CommandText>
                           <BottomBorder>
                             <Color>LightGrey</Color>
                             <Style>Solid</Style>
-                            <Width>1pt</Width>
                           </BottomBorder>
                           <BackgroundColor>White</BackgroundColor>
                           <PaddingLeft>2pt</PaddingLeft>
@@ -799,13 +803,83 @@ select @fecFin</CommandText>
               </Border>
             </Style>
           </Tablix>
-          <Tablix Name="Tablix3">
+          <Textbox Name="ReportTitle2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Número de Unidades por Taller</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>Underline</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
+            <rd:DefaultName>ReportTitle</rd:DefaultName>
+            <Top>48.26008mm</Top>
+            <Left>0.57605cm</Left>
+            <Height>6.35mm</Height>
+            <Width>59.26669mm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ReportTitle3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Venta de Repuestos por Canal</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>Underline</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
+            <rd:DefaultName>ReportTitle</rd:DefaultName>
+            <Top>2.54008mm</Top>
+            <Left>0.57605cm</Left>
+            <Height>6.35mm</Height>
+            <Width>59.26669mm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Tablix Name="Tablix4">
             <TablixCorner>
               <TablixCornerRows>
                 <TablixCornerRow>
                   <TablixCornerCell>
                     <CellContents>
-                      <Textbox Name="Textbox72">
+                      <Textbox Name="Textbox73">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -842,7 +916,7 @@ select @fecFin</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.22917in</Width>
+                  <Width>1.52108in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -854,14 +928,14 @@ select @fecFin</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="SW2">
+                        <Textbox Name="SW3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!SW.Value)</Value>
+                                  <Value>=Sum(Fields!num_unidades.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -887,14 +961,14 @@ select @fecFin</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox11">
+                        <Textbox Name="Textbox13">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!SW.Value)</Value>
+                                  <Value>=Sum(Fields!num_unidades.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -925,14 +999,14 @@ select @fecFin</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="SW">
+                        <Textbox Name="SW4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!SW.Value)</Value>
+                                  <Value>=Sum(Fields!num_unidades.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -955,14 +1029,14 @@ select @fecFin</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox9">
+                        <Textbox Name="Textbox14">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!SW.Value)</Value>
+                                  <Value>=Sum(Fields!num_unidades.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -993,14 +1067,14 @@ select @fecFin</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox6">
+                        <Textbox Name="Textbox15">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!SW.Value)</Value>
+                                  <Value>=Sum(Fields!num_unidades.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1026,14 +1100,14 @@ select @fecFin</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox10">
+                        <Textbox Name="Textbox16">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!SW.Value)</Value>
+                                  <Value>=Sum(Fields!num_unidades.Value)</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1064,7 +1138,7 @@ select @fecFin</CommandText>
             <TablixColumnHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="MARCA_VH">
+                  <Group Name="MARCA_VH2">
                     <GroupExpressions>
                       <GroupExpression>=Fields!MARCA_VH.Value</GroupExpression>
                     </GroupExpressions>
@@ -1077,7 +1151,7 @@ select @fecFin</CommandText>
                   <TablixHeader>
                     <Size>0.25in</Size>
                     <CellContents>
-                      <Textbox Name="MARCA_VH">
+                      <Textbox Name="MARCA_VH2">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -1115,7 +1189,7 @@ select @fecFin</CommandText>
                   <TablixHeader>
                     <Size>0.25in</Size>
                     <CellContents>
-                      <Textbox Name="Textbox7">
+                      <Textbox Name="Textbox8">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -1154,7 +1228,7 @@ select @fecFin</CommandText>
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="TIPO_ORDEN">
+                  <Group Name="TIPO_ORDEN2">
                     <GroupExpressions>
                       <GroupExpression>=Fields!TIPO_ORDEN.Value</GroupExpression>
                     </GroupExpressions>
@@ -1169,7 +1243,7 @@ select @fecFin</CommandText>
                       <TablixHeader>
                         <Size>2.15625in</Size>
                         <CellContents>
-                          <Textbox Name="TIPO_ORDEN2">
+                          <Textbox Name="TIPO_ORDEN3">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -1204,7 +1278,7 @@ select @fecFin</CommandText>
                       <KeepWithGroup>After</KeepWithGroup>
                     </TablixMember>
                     <TablixMember>
-                      <Group Name="LINEA_VH">
+                      <Group Name="LINEA_VH2">
                         <GroupExpressions>
                           <GroupExpression>=Fields!LINEA_VH.Value</GroupExpression>
                         </GroupExpressions>
@@ -1217,7 +1291,7 @@ select @fecFin</CommandText>
                       <TablixHeader>
                         <Size>2.15625in</Size>
                         <CellContents>
-                          <Textbox Name="LINEA_VH">
+                          <Textbox Name="LINEA_VH2">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -1247,7 +1321,7 @@ select @fecFin</CommandText>
                       </TablixHeader>
                       <Visibility>
                         <Hidden>true</Hidden>
-                        <ToggleItem>TIPO_ORDEN2</ToggleItem>
+                        <ToggleItem>TIPO_ORDEN3</ToggleItem>
                       </Visibility>
                     </TablixMember>
                   </TablixMembers>
@@ -1256,7 +1330,7 @@ select @fecFin</CommandText>
                   <TablixHeader>
                     <Size>2.15625in</Size>
                     <CellContents>
-                      <Textbox Name="Textbox5">
+                      <Textbox Name="Textbox12">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
@@ -1292,87 +1366,17 @@ select @fecFin</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>Taller</DataSetName>
-            <Top>2.19167in</Top>
-            <Left>0.22679in</Left>
+            <Top>2.36045in</Top>
+            <Left>0.23in</Left>
             <Height>1in</Height>
-            <Width>4.38542in</Width>
-            <ZIndex>1</ZIndex>
+            <Width>4.67733in</Width>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="ReportTitle2">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Número de Unidades porTaller</Value>
-                    <Style>
-                      <FontFamily>Segoe UI Light</FontFamily>
-                      <FontWeight>Bold</FontWeight>
-                      <TextDecoration>Underline</TextDecoration>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
-            <rd:DefaultName>ReportTitle</rd:DefaultName>
-            <Top>48.26008mm</Top>
-            <Left>0.57605cm</Left>
-            <Height>6.35mm</Height>
-            <Width>59.26669mm</Width>
-            <ZIndex>2</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="ReportTitle3">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Venta de Repuestos por Canal</Value>
-                    <Style>
-                      <FontFamily>Segoe UI Light</FontFamily>
-                      <FontWeight>Bold</FontWeight>
-                      <TextDecoration>Underline</TextDecoration>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
-            <rd:DefaultName>ReportTitle</rd:DefaultName>
-            <Top>2.54008mm</Top>
-            <Left>0.57605cm</Left>
-            <Height>6.35mm</Height>
-            <Width>59.26669mm</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
         <Height>95.03834mm</Height>
         <Style>
