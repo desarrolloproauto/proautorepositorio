@@ -57,7 +57,7 @@
           </QueryParameter>
         </QueryParameters>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>Get_RS_T_NumeroVINsTaller_GM_Borrador</CommandText>
+        <CommandText>Get_RS_T_NumeroVINsTaller_GM</CommandText>
       </Query>
       <Fields>
         <Field Name="ZONA">
